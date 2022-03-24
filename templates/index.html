@@ -1,0 +1,128 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style/style.css">
+	<link rel="icon" href="https://img.icons8.com/office/16/000000/home--v2.png">
+	<title>Groupie Tracker</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>GROUPIE TRACKER</h1>
+		<form action="/search/" method="GET">
+			<div class="bar">
+				<select class="inpt" name="soption">
+					<option value="Name">Artist/Band</option>
+					<option value="Members">Member</option>
+					<option value="CreationDate">Creation Date</option>
+					<option value="FirstAlbum">First Album</option>
+					<option value="Locations">Location</option>
+					<option value="Dates">Concert date</option>
+				</select>
+
+				<input list="sbar" id="inp" name="sinput" placeholder="Search anything..." required>
+				<button>
+					<img
+						src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/32/000000/external-search-logistic-delivery-kiranshastry-gradient-kiranshastry.png" />
+				</button>
+				<datalist id="sbar">
+					{{range .}}
+					<option value="{{.Name}} --> Artist/Band"></option>
+					{{range .Members}}
+					<option value="{{.}} --> Member"></option>
+					{{end}}
+					<option value="{{.CreationDate}} --> Creation Date"></option>
+					<option value="{{.FirstAlbum}} --> First Album"></option>
+
+					{{range $key, $value:= .DatesLocations}}
+					<option value="{{$key}} --> Location"></option>
+					{{range $value}}
+					<option value="{{.}} --> Concert date"></option>
+					{{end}}
+					{{end}}
+					{{end}}
+				</datalist>
+			</div>
+		</form>
+		<form id="filtersearch" action="/filter/" method="GET">
+			<div class="fieldgroup">
+				<div class="groupcbox">
+					<input type="checkbox" name="cdate" id="cdate" class="cbox">
+					<label for="cdate">Creation date</label>
+				</div>
+
+				<div class="groupinput">
+					<input class="numinp" type="number" name="cdate[from]" min="1600" placeholder="from" id="">
+					<input class="numinp" type="number" name="cdate[to]" max="2021" placeholder="to" id="">
+				</div>
+			</div>
+
+			<div class="fieldgroup">
+				<div class="groupcbox">
+					<input type="checkbox" name="falbum" id="falbum" placeholder="to" class="cbox">
+					<label for="falbum">First album date</label>
+				</div>
+
+				<div class="groupinput">
+					<input class="numinp" type="number" name="falbum[from]" min="1600" placeholder="from" id="">
+					<input class="numinp" type="number" name="falbum[to]" max="2021" placeholder="to" id="">
+				</div>
+			</div>
+
+			<div class="fieldgroup">
+				<div class="groupcbox">
+					<input type="checkbox" name="members" id="members" class="cbox">
+					<label for="members">Number of members</label>
+				</div>
+				<div class="groupinput">
+					<input class="numinp" type="number" name="members[from]" min="1" placeholder="from" id="">
+					<input class="numinp" type="number" name="members[to]" max="100" placeholder="to" id="">
+				</div>
+			</div>
+
+			<div class="fieldgroup">
+				<div class="groupcbox">
+					<input type="checkbox" name="locations" id="locations" class="cbox">
+					<label for="locations">Location of concerts</label>
+				</div>
+
+				<div class="locgroup">
+					<input id="locinp" name="location" placeholder="e.g., Washington, USA" id="">
+					<button id="filterbtn">Filter</button>
+				</div>
+			</div>
+		</form>
+
+
+		<p>{{if not .}}Sorry. No matching results found{{end}}</p>
+
+		<div class="back">
+			{{range .}}
+			<div class="container">{{.Name}} <br>
+				<a href="/artists/{{.Id}}"><img class="artist" src="{{.Image}}" alt=""></a>
+			</div>
+			{{end}}
+		</div>
+
+		<div class="gohome"><a href="/">GO HOME</a></div>
+		<footer>Designed by kbatyr in <a class="foot" href="https://01.alem.school/">@alem</a> school</footer>
+		<script>
+			function ScrollUp() {
+				var t, s;
+				s = document.body.scrollTop || window.pageYOffset;
+				t = setInterval(function () { if (s > 0) window.scroll(0, s -= 25); else clearInterval(t) }, 5);
+			}
+		</script>
+
+		<a class="top" href="#" onclick="ScrollUp();return!1;"><img class="scroll"
+				src="https://img.icons8.com/ios/50/000000/circled-up-2.png" alt=""></a>
+	</div>
+</body>
+
+</html>
+{{end}}

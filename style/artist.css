@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.container {
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+.parent {
+    margin-top:10%;
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    
+}
+.info {
+    width: 250px;
+    margin: 0.5px 0;
+}
+.concerts {
+    width: 250px;
+    margin: 0.5px 0;
+    padding-top: 25px;
+    text-transform: uppercase;
+}
+.border {
+    margin: 20px 0;
+    border-left: 1px solid black;
+    box-sizing: border-box;
+}
+.gohome {
+    font-size: 2em;
+    margin-top: 10px;
+    text-align: center;
+}
+.cities {
+    margin: 10px 0 0 0;
+    font-weight: bold;
+}
+.dates {
+    margin: 5px auto;
+}
+.map {
+    width: 100%;
+    height: 500px;
+    margin-top: 40px;
+}
+a {
+    text-decoration: none;
+    color: #525ced
+}
+a:hover {
+    font-weight: bold;
+}
+span {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+img {
+    border: 5px solid #ffffff;
+    border-radius:5px;
+}
+h1 {
+    font-size: 60px;
+    font-weight: 100;
+}
+h2 {
+    margin-left: 15%;
+    font-size: 7em;
+    font-weight: 100;
+}
+
+@media screen and (max-width:580px) {
+
+    h2 {
+        font-size: 5em;
+    }
+    .parent {
+        display: block;
+    }
+    .info {
+        width: 100%;
+        text-align: center;
+        box-sizing: content-box;
+        margin: 0.5px 0;
+    }
+    .concerts {
+        width: 100%;
+        margin: 0.5px 0;
+        text-align: center;
+        padding-top: 10px;
+        text-transform: uppercase;
+    }
+    .border {
+        margin: 10px 10px;
+        border-top: 1px solid black;
+        box-sizing: border-box;
+    }
+}
