@@ -14,6 +14,7 @@ Groupie Trackers consists on receiving a given API and manipulate the data conta
 
   - And the last one, `relation`, does the link between all the other parts, `artists`, `dates` and `locations`.
   
-  ### Usage
- $ go run .
+### Usage
+
+**$ go run .**
 
