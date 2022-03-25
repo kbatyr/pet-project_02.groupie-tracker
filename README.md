@@ -16,5 +16,5 @@ Groupie Trackers consists on receiving a given API and manipulate the data conta
   
 ### Usage
 
-**$ go run .**
+```$ go run .```
 
